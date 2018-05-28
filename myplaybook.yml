@@ -1,4 +1,14 @@
 ---
+- name: Common Play for all instances
+  hosts: "{{ variable_host }}"
+  remote_user: ansible
+  become: yes
+  become_user: root
+  tags:
+    - baseplay
+  roles:
+    - common
+    
 - name: Play for Web Server
   hosts: "{{ variable_host }}"
   remote_user: ansible
