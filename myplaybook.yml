@@ -1,0 +1,30 @@
+---
+- name: Play for Web Server
+  hosts: "{{ variable_host }}"
+  remote_user: ansible
+  become: yes
+  become_user: root
+  gather_facts: False
+  #pre_tasks:
+  # - setup:
+  #     filter: ansible_date_time*
+  tags:
+    - webserver
+  roles:
+    - common
+    - web
+
+- name: Play for DB Server
+  hosts: "{{ variable_host }}"
+  remote_user: ansible
+  become: yes
+  become_user: root
+  gather_facts: False
+  #pre_tasks:
+  # - setup:
+  #     filter: ansible_date_time*
+  tags:
+    - dbserver
+  roles:
+    - common
+    - db
